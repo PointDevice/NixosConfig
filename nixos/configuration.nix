@@ -195,6 +195,7 @@
       pciutils
       
       gtk3
+      stow
 
       libsForQt5.ark
       libsForQt5.qtstyleplugin-kvantum
