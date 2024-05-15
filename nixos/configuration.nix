@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, username, hostname, system, ... }:
+{ config, pkgs, username, hostname, userDesc, system, ... }:
 
 {
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -34,7 +34,7 @@
     settings = {
       default_session = {
         command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --time-format '%I:%M %p | %a • %h | %F' --cmd 'sway'";
-        user = "point";
+        user = username;
       };
     };
   };
@@ -153,9 +153,9 @@
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.point = {
+  users.users.${username}= {
     isNormalUser = true;
-    description = "PointDevice";
+    description = userDesc;
     extraGroups = [ 
       "networkmanager" 
       "wheel" 

@@ -14,6 +14,7 @@
     
     #user Vars
     username = "point";
+    userDesc = "PointDevice"; #full username
     hostname = "PointNixOSlt";
 
 
@@ -37,7 +38,7 @@
   
   nixosConfigurations = {
     ${hostname} = nixpkgs.lib.nixosSystem { 
-      specialArgs = { flake-inputs = inputs; inherit system; inherit username; inherit hostname; };
+      specialArgs = { flake-inputs = inputs; inherit system; inherit username; inherit hostname; inherit userDesc; };
 
 
       modules = [ 

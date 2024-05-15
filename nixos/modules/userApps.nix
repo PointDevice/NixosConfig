@@ -1,4 +1,4 @@
-{config, flake-inputs, ...}:
+{config, flake-inputs, username, ...}:
 let
   system = "x86_64-linux";
 
@@ -14,7 +14,7 @@ in
 {
 #in theory, the nixpkgs-user input will be updated regularly
 #allowing these packages to stay up to date 
-  users.users.point.packages = with userPkgs; [
+  users.users.${username}.packages = with userPkgs; [
     firefox
     floorp
     vesktop
