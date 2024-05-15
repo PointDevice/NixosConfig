@@ -134,7 +134,7 @@
       enable = true;
       ohMyZsh = {
         enable = true;
-        custom = "/home/point/.config/zsh_custom";
+        custom = "/home/${username}/.config/zsh_custom";
         theme = "catppuccin";
         plugins = [
           "sudo"
