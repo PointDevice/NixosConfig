@@ -12,10 +12,20 @@ let
   };
 in 
 {
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = with userPkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-wlr
+    ];
+  };
+
   programs.sway = {
     enable = true;
     package = userPkgs.swayfx;
     extraOptions = ["--unsupported-gpu"];
+    wrapperFeatures.gtk = true;
     extraPackages = with userPkgs; [
       autotiling
       swaylock-fancy
