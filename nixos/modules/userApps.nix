@@ -17,7 +17,7 @@ in
   users.users.${username}.packages = with userPkgs; [
     firefox
     floorp
-    vesktop
+    #vesktop
     kate
     moonlight-qt
     cava
@@ -32,5 +32,8 @@ in
     libreoffice-qt
     exercism
     ghidra
+    krita
+    blender
+    osu-lazer-bin
   ];
 }
