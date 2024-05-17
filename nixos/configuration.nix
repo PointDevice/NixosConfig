@@ -174,6 +174,11 @@
   hardware.bluetooth.powerOnBoot = false;
   services.blueman.enable = true;
 
+  #im not really huge on the idea of having flatpak on nix 
+  #but man does dealing with discord's BS annoy me
+  services.flatpak.enable = true; 
+
+  qt.style = "kvantum";
   # List packages installed in system profile. To search, run:
   environment = {
     systemPackages = with pkgs; [
@@ -193,8 +198,9 @@
       jq
       killall
       pciutils
-      
+
       gtk3
+      libsForQt5.qtstyleplugin-kvantum
       stow
 
       libsForQt5.ark
@@ -222,10 +228,10 @@
       numix-icon-theme-circle
       #colloid-icon-theme
       #catppuccin-gtk
-      #(catppuccin-kvantum.override {
-      #  accent = "Teal";
-      #  variant = "Macchiato";
-      #})
+      (catppuccin-kvantum.override {
+        accent = "Teal";
+        variant = "Macchiato";
+      })
       #catppuccin-cursors.macchiatoTeal
       #catppuccin
 
@@ -292,6 +298,7 @@
       vaapiVdpau
       libvdpau-va-gl
       nvidia-vaapi-driver
+      vulkan-validation-layers
     ];
 
     driSupport = true;
