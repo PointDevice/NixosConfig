@@ -78,14 +78,20 @@
       });
     };
     iconTheme = {
-        #name = "Colloid-dark-teal";
-        package = pkgs.papirus-icon-theme;
-        name = "Papirus-Dark";
-       # (pkgs.colloid-icon-theme.override {
-       #   colorVariants = ["teal"];
-       #   schemeVariants = ["all"];
-       # });
+      package = pkgs.papirus-icon-theme;
+      name = "Papirus-Dark";
+    };
+  };
+  qt = {
+    enable = true;
+    platformTheme.name = "qtct";
+    style = {
+      name = "kvantum";
+      package = pkgs.catppuccin-kvantum.override {
+        variant = "Macchiato";
+        accent = "Teal";
       };
+    };
   };
 
   # Let Home Manager install and manage itself.

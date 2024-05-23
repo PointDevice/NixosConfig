@@ -38,6 +38,20 @@
       };
     };
   };
+  # this is a life saver.
+  # literally no documentation about this anywhere.
+  # might be good to write about this...
+  # https://www.reddit.com/r/NixOS/comments/u0cdpi/tuigreet_with_xmonad_how/
+  systemd.services.greetd.serviceConfig = {
+    Type = "idle";
+    StandardInput = "tty";
+    StandardOutput = "tty";
+    StandardError = "journal"; # Without this errors will spam on screen
+    # Without these bootlogs will spam on screen
+    TTYReset = true;
+    TTYVHangup = true;
+    TTYVTDisallocate = true;
+  };
 
 
   networking.hostName = hostname;#"PointAsusNixOS"; # Define your hostname.
@@ -200,12 +214,10 @@
       pciutils
 
       gtk3
-      libsForQt5.qtstyleplugin-kvantum
       stow
 
-      libsForQt5.ark
-      libsForQt5.qtstyleplugin-kvantum
-      libsForQt5.qt5ct
+      kdePackages.ark
+      kdePackages.qtstyleplugin-kvantum
 
       #---Screenshot Stuffs---
       grim
@@ -228,12 +240,13 @@
       numix-icon-theme-circle
       #colloid-icon-theme
       #catppuccin-gtk
-      (catppuccin-kvantum.override {
-        accent = "Teal";
-        variant = "Macchiato";
-      })
+      #(catppuccin-kvantum.override {
+      #  accent = "Teal";
+      #  variant = "Macchiato";
+      #})
       #catppuccin-cursors.macchiatoTeal
       #catppuccin
+      cudatoolkit
 
       #---Additional network Stuff---
       networkmanagerapplet

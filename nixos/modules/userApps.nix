@@ -35,5 +35,6 @@ in
     krita
     blender
     osu-lazer-bin
+    godot_4
   ];
 }
