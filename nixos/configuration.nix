@@ -101,6 +101,7 @@
 
   sound.enable = true;
   hardware.pulseaudio.enable = false;
+  hardware.keyboard.qmk.enable = true;
 
   security.polkit.enable = true;
   security.rtkit.enable = true;
@@ -235,6 +236,7 @@
       #---Audio---
       pavucontrol
       pamixer
+      playerctl
 
       #---Themes---
       numix-icon-theme-circle
