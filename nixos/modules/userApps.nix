@@ -36,5 +36,6 @@ in
     blender
     osu-lazer-bin
     godot_4
+    xivlauncher
   ];
 }
