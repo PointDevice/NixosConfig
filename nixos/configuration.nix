@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, username, hostname, userDesc, system, ... }:
+{ config, pkgs, username, hostname, userDesc, system, lib, ... }:
 
 {
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -193,7 +193,8 @@
   #but man does dealing with discord's BS annoy me
   services.flatpak.enable = true; 
 
-  qt.style = "kvantum";
+  services.resolved.enable = true;
+
   # List packages installed in system profile. To search, run:
   environment = {
     systemPackages = with pkgs; [
@@ -218,7 +219,6 @@
       stow
 
       kdePackages.ark
-      kdePackages.qtstyleplugin-kvantum
 
       #---Screenshot Stuffs---
       grim
@@ -304,7 +304,7 @@
 
 
   # Enable OpenGL
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
 
     extraPackages = with pkgs; [ 
@@ -315,9 +315,6 @@
       nvidia-vaapi-driver
       vulkan-validation-layers
     ];
-
-    driSupport = true;
-    driSupport32Bit = true;
   };
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
