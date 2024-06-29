@@ -28,6 +28,13 @@ in
         fullAppDisplay
         shuffle # shuffle+ (special characters are sanitized out of ext names)
         hidePodcasts
+        (let
+          dummy = builtins.toFile "dummy.js" "";
+        in { 
+          src = builtins.dirOf dummy;
+          filename = builtins.baseNameOf dummy;
+          experimentalFeatures = true;
+        })
       ];
       customColorScheme = {
         text               = "CAD3F5";
