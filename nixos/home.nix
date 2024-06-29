@@ -1,7 +1,13 @@
 #UNUSED DO NOT EDIT
 
-{ config, pkgs, ... }:
-
+{ config, pkgs, lib, ... }:
+let 
+  accent = "Teal";
+  variant = "Macchiato";
+  kvantumThemePackage = pkgs.catppuccin-kvantum.override {
+    inherit variant accent;
+  };
+in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -24,7 +30,8 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-
+    libsForQt5.qtstyleplugin-kvantum
+    libsForQt5.qt5ct
   ];
   # home.file = {
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
@@ -61,7 +68,7 @@
   #home.pointerCursor.gtk.enable = true;
   home.pointerCursor = {
     gtk.enable = true;
-    name = "Catppuccin-Macchiato-Teal-Cursors";
+    name = "catppuccin-macchiato-teal-cursors";
     package = pkgs.catppuccin-cursors.macchiatoTeal;
     size = 16;
   }; 
@@ -87,12 +94,37 @@
     platformTheme.name = "qtct";
     style = {
       name = "kvantum";
-      package = pkgs.catppuccin-kvantum.override {
-        variant = "Macchiato";
-        accent = "Teal";
+    };
+  };
+
+  xdg.configFile = { #lib.mkIf hasSeat {
+    kvantum = {
+      target = "Kvantum/kvantum.kvconfig";
+      text = lib.generators.toINI { } {
+        General.theme = "Catppuccin-${variant}-${accent}";
+      };
+    };
+    "Kvantum/Catppuccin-${variant}-${accent}".source = "${kvantumThemePackage}/share/Kvantum/Catppuccin-${variant}-${accent}";
+
+    qt5ct = {
+      target = "qt5ct/qt5ct.conf";
+      text = lib.generators.toINI { } {
+        Appearance = {
+          icon_theme = "Papirus-Dark";
+        };
+      };
+    };
+
+    qt6ct = {
+      target = "qt6ct/qt6ct.conf";
+      text = lib.generators.toINI { } {
+        Appearance = {
+          icon_theme = "Papirus-Dark";
+        };
       };
     };
   };
+
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
