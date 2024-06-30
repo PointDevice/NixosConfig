@@ -33,7 +33,9 @@ in
     exercism
     ghidra
     krita
-    blender
+    (blender.override { 
+      cudaSupport = true;
+    })
     osu-lazer-bin
     godot_4
     xivlauncher
