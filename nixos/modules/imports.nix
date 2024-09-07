@@ -5,5 +5,6 @@
     [ 
       ./userApps.nix
       ./userSway.nix
+      ./nbfc.nix
     ];
 }
