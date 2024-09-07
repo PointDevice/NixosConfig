@@ -150,7 +150,7 @@
       ohMyZsh = {
         enable = true;
         custom = "/home/${username}/.config/zsh_custom";
-        theme = "catppuccin";
+        #theme = "catppuccin";  -Theme will be managed with Oh-My-Posh going forward
         plugins = [
           "sudo"
           "zoxide"
@@ -211,9 +211,13 @@
       zoxide
       git
       tmux
+      fzf
+      oh-my-posh
+      zellij
       jq
       killall
       pciutils
+      lolcat
 
       gtk3
       stow
