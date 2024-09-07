@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    spicetify-nix.url = "github:the-argus/spicetify-nix";
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     home-manager.url = "github:nix-community/home-manager/master";
     nixpkgs-user.url = "github:nixos/nixpkgs?ref=nixos-unstable";
   };
