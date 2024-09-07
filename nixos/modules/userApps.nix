@@ -33,6 +33,7 @@ in
     exercism
     ghidra
     krita
+    mpv
     (blender.override { 
       cudaSupport = true;
     })
