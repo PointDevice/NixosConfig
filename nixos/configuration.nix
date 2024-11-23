@@ -99,7 +99,7 @@
   #  ];
   #};
 
-  sound.enable = true;
+  #sound.enable = true;
   hardware.pulseaudio.enable = false;
   hardware.keyboard.qmk.enable = true;
 

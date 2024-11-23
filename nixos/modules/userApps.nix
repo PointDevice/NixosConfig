@@ -17,7 +17,7 @@ in
   users.users.${username}.packages = with userPkgs; [
     firefox
     floorp
-    #vesktop
+    #vesktop - installed via flathub 
     kate
     moonlight-qt
     cava
@@ -34,11 +34,14 @@ in
     ghidra
     krita
     mpv
-    (blender.override { 
-      cudaSupport = true;
-    })
+    #(blender.override { 
+    #  cudaSupport = true;
+    #})
     osu-lazer-bin
     godot_4
     xivlauncher
+    runelite
+    pcsx2
+    freecad-wayland
   ];
 }

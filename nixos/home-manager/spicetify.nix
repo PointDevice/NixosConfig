@@ -1,6 +1,6 @@
 { pkgs, lib, spicetify-nix, ... }:
 let
-  spicePkgs = spicetify-nix.packages.${pkgs.system}.default;
+  spicePkgs = spicetify-nix.legacyPackages.${pkgs.system};
 in
 {
   # allow spotify to be installed if you don't have unfree enabled already
@@ -9,7 +9,7 @@ in
   #];
 
   # import the flake's module for your system
-  imports = [ spicetify-nix.homeManagerModule ];
+  imports = [ spicetify-nix.homeManagerModules.default ];
 
   #home.packages = with pkgs; [
   #  spotifywm
@@ -20,7 +20,7 @@ in
   programs.spicetify =
   {
     enable = true;
-    theme = spicePkgs.themes.Dribbblish;
+    theme = spicePkgs.themes.dribbblish;
     colorScheme = "custom"; 
     #catppuccin-macchiato";
 
@@ -28,13 +28,21 @@ in
       fullAppDisplay
       shuffle # shuffle+ (special characters are sanitized out of ext names)
       hidePodcasts
-      (let
-        dummy = builtins.toFile "dummy.js" "";
-      in { 
-        src = builtins.dirOf dummy;
-        filename = builtins.baseNameOf dummy;
-        experimentalFeatures = true;
-      })
+      #(let
+      #  dummy = builtins.toFile "dummy.js" "";
+      #in { 
+      #  src = builtins.dirOf dummy;
+      #  filename = builtins.baseNameOf dummy;
+      #  experimentalFeatures = true;
+      #})
+    ];
+    enabledCustomApps = with spicePkgs.apps; [
+      #newReleases
+      reddit
+      lyricsPlus
+      localFiles
+      ncsVisualizer
+      historyInSidebar
     ];
     customColorScheme = {
       text               = "CAD3F5";
